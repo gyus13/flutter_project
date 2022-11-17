@@ -12,49 +12,78 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-            title: Text('앱임')
         ),
-        body: Container(
-          height: 150,
-            // margin: EdgeInsets.all(30),
-          padding: EdgeInsets.all(20),
-          child: Row(
-            children: [
-              Image.asset('assets/images/gyus.jpg',width: 150),
-              Container(
-                width: 300,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children:  [
-                    Text("박규성"),
-                    Text("박규성"),
-                    Text("박규성"),
-                    Text("박규성"),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: const [
-                        Icon(Icons.favorite),
-                        Text('3')
-                      ],
-                    ),
-                  ],
-                ),
-              )
-            ],
+        body: ListView.builder(
+          itemCount: 3 ,
+          itemBuilder: (c, i){
+            return ListTile(
+              leading: Icon(Icons.people_alt_rounded),
+              title: Text('홍길동')
+            );
+          },
         ),
-        ),
-        bottomNavigationBar: BottomAppBar(
-          child: SizedBox(
-            height: 70,
-            child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: const [ Icon(Icons.star), Icon(Icons.star), Icon(Icons.star) ]
-            ),
-          ),
-        ),
+          bottomNavigationBar:BottomAppBar(
+            child: BottomBar(),
+          )
       )
     );
-
   }
 }
 
+class UserInfo extends StatelessWidget {
+  const UserInfo({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 50, // 가로 설정
+      padding: EdgeInsets.all(10),
+      child: Row(
+        children: const [
+          Icon(
+            Icons.account_circle,
+            size: 40.0
+          ),
+          Text('홍길동')
+        ],
+      ),
+    );
+  }
+}
+
+class BottomBar extends StatelessWidget {
+  const BottomBar({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 50,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children :const [
+          Icon(
+            Icons.call,
+          ),
+          Icon(Icons.message),
+          Icon(
+            Icons.settings,
+          ),
+        ]
+      ),
+    );
+  }
+}
+
+
+
+
+class ShopItem extends StatelessWidget {
+  const ShopItem({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      child: Text('안녕')
+    );
+  }
+}
